@@ -4,11 +4,10 @@ import com.example.强转类型导致Stream流处理失败.vo.TbSkuVo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.DemoApplication.getLinkedHashMapList;
+import static com.example.DemoApplication.getObjectMap;
 
 /**
  * @author 游家纨绔
@@ -18,17 +17,15 @@ import static com.example.DemoApplication.getLinkedHashMapList;
 public class Executor1 {
 
     public static void main(String[] args) {
-        // 构造一个List<LinkedHashMap<String, Object>>
-        List<LinkedHashMap<String, Object>> list = getLinkedHashMapList();
-        // 再使用Map包裹着List
-        Map<String, Object> mapObj = Map.of("result", list);
+        // 构造一个Map，其中的value值实际为 List<LinkedHashMap<String, Object>> 类型
+        Map<String, Object> mapObj = getObjectMap();
 
-        // TODO 强转：从最外层的Map中获取元素，因为定义的是Object类型，所以可以强制转换成List<TbSkuVo>
+        // TODO 强转：因为 mapObj 的value值定义的是Object类型，所以可以强制转换成 List<TbSkuVo>
         List<TbSkuVo> tbSkuVoList = (List<TbSkuVo>) mapObj.get("result");
 
         System.out.println(tbSkuVoList);
 
-        // 这时候我想处理数据。比如：将 lastUpdateTime 属性值的毫秒值截取掉，只保留日期和时分秒的部分
+        // TODO 这时候我想处理数据。比如：将 lastUpdateTime 属性值的毫秒值截取掉，只保留日期和时分秒的部分
         DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss SSS");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         tbSkuVoList.stream().map(tbSkuVo -> {
@@ -42,9 +39,9 @@ public class Executor1 {
 
         System.out.println(tbSkuVoList);
 
-        // TODO 分析：在Java中，将List<LinkedHashMap>强制转换为List<User>并不会改变列表中元素的类型。
-        //           LinkedHashMap和User是两个完全不同的类型，即使你进行了强制类型转换，运行时类型仍然是LinkedHashMap。
-        //  这意味着当你尝试调用TbSkuVo::getLastUpdateTime方法时，实际上你是在尝试对LinkedHashMap对象调用这个方法，
-        //  而LinkedHashMap并没有这个方法，因此会报错java.lang.ClassCastException(class转换异常)。
+        // TODO 分析：在Java中，将 List<LinkedHashMap> 强制转换为 List<TbSkuVo> 并不会改变列表中元素的类型。
+        //           LinkedHashMap和 TbSkuVo 是两个完全不同的类型，即使你进行了强制类型转换，运行时类型仍然是 LinkedHashMap。
+        //  这意味着当你尝试调用 TbSkuVo::getLastUpdateTime 方法时，实际上你是在尝试对 LinkedHashMap 对象调用这个方法，
+        //  而 LinkedHashMap 并没有这个方法，因此会报错 java.lang.ClassCastException(class转换异常)。
     }
 }

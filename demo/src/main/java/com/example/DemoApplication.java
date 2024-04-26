@@ -6,19 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @SpringBootApplication
 public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-
-
     }
 
-    public static List<LinkedHashMap<String, Object>> getLinkedHashMapList() {
+    public static Map<String, Object> getObjectMap() {
         // 定义Map
         Map<String, Object> map = Map.of(
                 "id", 1,
@@ -58,7 +54,9 @@ public class DemoApplication {
         LinkedHashMap<String, Object> linkedHashMap1 = new LinkedHashMap<>(map1);
         LinkedHashMap<String, Object> linkedHashMap2 = new LinkedHashMap<>(map2);
         // 使用List包裹LinkedHashMap
-        return List.of(linkedHashMap, linkedHashMap1, linkedHashMap2);
+        List<LinkedHashMap<String, Object>> mapList = List.of(linkedHashMap, linkedHashMap1, linkedHashMap2);
+        Map<String, Object> mapObj = Map.of("result", mapList);
+        return mapObj;
     }
 
 }
