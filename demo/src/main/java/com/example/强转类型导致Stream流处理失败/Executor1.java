@@ -8,55 +8,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.example.DemoApplication.getLinkedHashMapList;
+
 /**
  * @author 游家纨绔
  * @dateTime 2024-04-26 下午11:51
  * @apiNote TODO 错误强转
  */
 public class Executor1 {
-
-    private static List<LinkedHashMap<String, Object>> getLinkedHashMapList() {
-        // 定义Map
-        Map<String, Object> map = Map.of(
-                "id", 1,
-                "spuId", 0,
-                "title", "title_0ba6a947909c",
-                "images", "images_6b98cafc18ae",
-                "price", 0,
-                "indexes", "indexes_90d01ac7a320",
-                "ownSpec", "ownSpec_5478c6bbcabc",
-                "enable", 0,
-                "createTime", "2024-04-27 00:02:10",
-                "lastUpdateTime", "2024-04-28 00:02:10 789");
-        Map<String, Object> map1 = Map.of(
-                "id", 1,
-                "spuId", 0,
-                "title", "title_0ba6a947909c",
-                "images", "images_6b98cafc18ae",
-                "price", 0,
-                "indexes", "indexes_90d01ac7a320",
-                "ownSpec", "ownSpec_5478c6bbcabc",
-                "enable", 0,
-                "createTime", "2024-04-27 00:02:10",
-                "lastUpdateTime", "2024-04-29 00:02:10 789");
-        Map<String, Object> map2 = Map.of(
-                "id", 1,
-                "spuId", 0,
-                "title", "title_0ba6a947909c",
-                "images", "images_6b98cafc18ae",
-                "price", 0,
-                "indexes", "indexes_90d01ac7a320",
-                "ownSpec", "ownSpec_5478c6bbcabc",
-                "enable", 0,
-                "createTime", "2024-04-27 00:02:10",
-                "lastUpdateTime", "2024-04-27 00:02:10 789");
-        // 将Map转为LinkedHashMap
-        LinkedHashMap<String, Object> linkedHashMap = new LinkedHashMap<>(map);
-        LinkedHashMap<String, Object> linkedHashMap1 = new LinkedHashMap<>(map1);
-        LinkedHashMap<String, Object> linkedHashMap2 = new LinkedHashMap<>(map2);
-        // 使用List包裹LinkedHashMap
-        return List.of(linkedHashMap, linkedHashMap1, linkedHashMap2);
-    }
 
     public static void main(String[] args) {
         // 构造一个List<LinkedHashMap<String, Object>>
