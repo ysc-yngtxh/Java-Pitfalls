@@ -35,7 +35,7 @@ public class Executor1 {
             // 获取到lastUpdateTime属性值，并将其强制转换成String类型
             tbSkuVo.setLastUpdateTime(lastUpdateTimeFormat);
             return tbSkuVo;
-        }).toList();
+        }).toList();123
 
         System.out.println(tbSkuVoList);
 
