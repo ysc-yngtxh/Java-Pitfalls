@@ -52,7 +52,7 @@ public class GetFileStream {
 
        // Spring 框架提供了更加好用的加载读取文件的方式:ClassPathResource
        // ClassPathResource 的坑:
-       //  获取文件对象的 getFile()方法，这里有一个小坑。当利用这个方法去读取 Jar 包里面类路径的文件的时候是行不通的。
+       // 获取文件对象的 getFile()方法，这里有一个小坑。当利用这个方法去读取 Jar 包里面类路径的文件的时候是行不通的。
        // 经过代码调试，发现加载的地址是一个 Jar 文件协议地址，它类似这种格式 jar:file:/xxx/xx.jar!/xxx。
        // 而 getFile()方法只支持 JBoss 的 vfs 协议头和传统文件系统的 file 协议头。所以推荐使用 getInputStream()
        
@@ -62,13 +62,13 @@ public class GetFileStream {
        Properties ps = new Properties()
        ps.load(resource1.getInputStream())
        resource1.getFile().getAbsolutePath()
-      }
+   }
 
-      private static void readerFileStream(InputStream inputStream) throws IOException {
+    private static void readerFileStream(InputStream inputStream) throws IOException {
          BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
          String readLine;
          while ((readLine = bufferedReader.readLine()) != null) {
              System.out.println(readLine);
-         ｝
-      ｝
+         }
+    }
 }
