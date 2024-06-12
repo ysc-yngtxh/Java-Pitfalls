@@ -34,47 +34,41 @@ public class GetFileStream {
 
 
        // TODO 通过 ClassLoader类加载器 获取资源
-       URL url3 = GetFileStream.class.getClassLoader().getResource("com/example/获取文件流/info.txt");                                        System.out.println(url3.toString());
+       URL url3 = GetFileStream.class.getClassLoader().getResource("com/example/获取文件流/info.txt");
+       System.out.println(url3.toString());
 
-                                                                                                                                            // 由于是通过 ClassLoader类加载器 获取资源，默认是从 classpath 根下获取。                                                                    // 而 application.properties 文件编译后是在target/classes 目录下的，因此无需以“/"开头
-                                                                                                                                            InputStream inputStream1 = GetFileStream.class.getClassLoader().getResourceAsStream("application.properties");
-                                                                                                                                            readerFileStream(inputStream1);
+       // 由于是通过 ClassLoader类加载器 获取资源，默认是从 classpath 根下获取。
+       // 而 application.properties 文件编译后是在target/classes 目录下的，因此无需以“/"开头
+       InputStream inputStream1 = GetFileStream.class.getClassLoader().getResourceAsStream("application.properties");
+       readerFileStream(inputStream1);
 
-                                                                                                                                           // 使用系统的路径分隔符，进行组装路径
-                                                                                                                                            String path = Thread.currentThread().getContextClassLoader().getResource().toURI().getPath()
-                                                                                                                                            path.replace(File.separate, "＼＼")
+       // 使用系统的路径分隔符，进行组装路径
+       String path = Thread.currentThread().getContextClassLoader().getResource().toURI().getPath()
+       path.replace(File.separate, "＼＼")
 
-                                                                                                                                           // 路径中存在中文，会不会影响
-                                                                                                                                           new File(this.getClass().getResource("/").toURI ())
-                                                                                                                                           new File(this.getClass().getResource("/").getFile())
+       // 路径中存在中文，会不会影响
+       new File(this.getClass().getResource("/").toURI ())
+       new File(this.getClass().getResource("/").getFile())
 
-                                                                                                                                          // Spring 框架提供了更加好用的加载读取文件的方式:ClassPathResource
-                                                                                                                                          // ClassPathResource 的坑:
-      获取文件对象的 getFile()方法，这里有一个小坑。当利用这个方法去读取 Jar 包里面类路径的文件的时候是行不通的。经过代码调试，发现加载的地址是一个 Jar 文件协议地址，它类似这种格式 jar:file:/xxx/xx.jar!/xxx。而 getFile()方法只支持 JBoss 的 vfs 协议头和传统文件系统的 file 协议头。所以推荐使用 getInputStream()
-                                                                                                                                           // 默认读取 Resources 包下的文件
-                                                                                                                                          ClassPathResource resource = new ClassPathResource("application.properties")
-                                                                                                                                         ClassPathResource resource1 = new ClassPathResource("application.properties", Jdbc.class)
-                                                                                                                                         Properties ps = new Properties()
-                                                                                                                                           ps.load(resource1.getInputStream())
-                                                                                                                                         resource1.getFile().getAbsolutePath()
- }
+       // Spring 框架提供了更加好用的加载读取文件的方式:ClassPathResource
+       // ClassPathResource 的坑:
+       //  获取文件对象的 getFile()方法，这里有一个小坑。当利用这个方法去读取 Jar 包里面类路径的文件的时候是行不通的。
+       // 经过代码调试，发现加载的地址是一个 Jar 文件协议地址，它类似这种格式 jar:file:/xxx/xx.jar!/xxx。
+       // 而 getFile()方法只支持 JBoss 的 vfs 协议头和传统文件系统的 file 协议头。所以推荐使用 getInputStream()
+       
+       // 默认读取 Resources 包下的文件
+       ClassPathResource resource = new ClassPathResource("application.properties")
+       ClassPathResource resource1 = new ClassPathResource("application.properties", Jdbc.class)
+       Properties ps = new Properties()
+       ps.load(resource1.getInputStream())
+       resource1.getFile().getAbsolutePath()
+      }
 
-                    private static void readerFileStream(InputStream inputStream) throws IOException {
-                                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                                        String readLine;
-                                                while ((readLine = bufferedReader.readLine()) != null) {
-                                                                System.out.println(readLine);
-                                                }
-                    }
-
-
-    }
-                                                }
-                    }
-                                                                                                                                                                                                                }
-                                                                                                                                                                                    }
-                                                                                                                                                                                }
-                                                                                                                                                                    }
-                }
-    }
+      private static void readerFileStream(InputStream inputStream) throws IOException {
+         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+         String readLine;
+         while ((readLine = bufferedReader.readLine()) != null) {
+             System.out.println(readLine);
+         ｝
+      ｝
 }
