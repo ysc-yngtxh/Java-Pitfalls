@@ -4,7 +4,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -24,3 +25,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+.idea
+Demo1/.mvn
+Demo2/.mvn
+Java开发在工作中遇到的坑点.iml
+.gitignore
+mvnw
+mvnw.cmd
