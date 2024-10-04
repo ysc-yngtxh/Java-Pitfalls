@@ -1,5 +1,6 @@
 package com.example.api;
 
+import com.example.pojo.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiController {
 
     @RequestMapping("/api")
-    public String api() {
-        return "api";
+    public User api() {
+        return User.builder().name("游家纨绔").build();
     }
 }
