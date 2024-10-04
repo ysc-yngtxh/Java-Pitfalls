@@ -68,6 +68,25 @@
 </build>
 ```
 
+## 三、maven-compiler-plugin 与 spring-boot-maven-plugin 的区别
+   <h3>     
+     <figure>
+       maven-compiler-plugin
+       <figure>
+         是 Maven 的一个插件，用于编译 Java 源代码。它允许你指定 Java 源代码的编译版本、生成的字节码版本以及注解处理器的路径等配置。
+         它通常用于编译项目中的 Java 源代码，生成相应的字节码文件。
+         简单理解就是只编译生成项目的字节码文件，不会扩展编译生成项目的依赖文件【例如：所需的 SpringBoot 依赖不会生成】
+       </figure>
+       spring-boot-maven-plugin
+       <figure>
+         是 Spring Boot 提供的一个 Maven 插件，用于构建和运行 Spring Boot 应用程序。它允许你指定 Spring Boot 应用的入口类、打包方式、运行配置等。
+         它通常用于构建和运行 Spring Boot 应用程序，生成相应的可执行 Jar 文件。
+       </figure>
+         在实际使用中，maven-compiler-plugin 和 spring-boot-maven-plugin 可以一起使用，以实现编译和打包 Spring Boot 应用程序。
+         在 Maven 的 pom 文件中，你可以同时配置这两个插件，以实现编译和打包 Spring Boot 应用程序。
+     </figure>
+   </h3>
+
 
 
 
