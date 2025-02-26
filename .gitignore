@@ -32,3 +32,5 @@ Java开发在工作中遇到的坑点.iml
 .gitignore
 mvnw
 mvnw.cmd
+Demo3/.mvn
+Demo4/.mvn
