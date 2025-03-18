@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>Demo3</artifactId>
+    <artifactId>Jdk23-Lombok</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Demo3</name>
-    <description>Demo3</description>
+    <name>${project.artifactId}</name>
+    <description>${project.artifactId}</description>
 
     <properties>
         <java.version>23</java.version>
