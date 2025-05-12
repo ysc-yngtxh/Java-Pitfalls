@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: @project.artifactId@
+server:
+  port: 8080
+
+# 这里获取的是对文件内部变量的引用
+self:
+  use:
+    property: ${spring.application.name}
+
+
+# 所以在引用外部变量时，避免引用变量名字冲突，需要使用@符号来引用作为区分
+# 在使用@符号进行引用，前提是pom.xml文件中开启了资源的过滤 <filtering>true</filtering>
+parent:
+  groupId: @project.parent.artifactId@
+  artifactId: @project.parent.artifactId@
+  version: @project.parent.artifactId@
+
+custom:
+  groupId: @project.groupId@
+  artifactId: @project.artifactId@
+  version: @project.version@
+  name: @project.name@
+  description: @project.description@
+  basedir: @project.basedir@
+  baseUri: @project.baseUri@
+  build:
+    directory: @project.build.directory@
+    source:
+      directory: @project.build.sourceDirectory@
