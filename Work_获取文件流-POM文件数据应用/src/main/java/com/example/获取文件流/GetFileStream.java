@@ -34,7 +34,7 @@ public class GetFileStream {
 
 		// info.txt 文件编译后在 classpath 根下的子目录中，因此需要将 info.txt 文件目录路径传入
 		URL url2 = GetFileStream.class
-				.getClassLoader().getResource("com/example/获取文件流/info.txt");
+				  .getClassLoader().getResource("com/example/获取文件流/info.txt");
 		System.out.println(url2);
 		System.out.println(URLDecoder.decode(url2.getPath(), StandardCharsets.UTF_8));
 
