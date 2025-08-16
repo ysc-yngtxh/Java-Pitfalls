@@ -17,7 +17,7 @@
     <description>Work_Java自带Logger日志</description>
 
     <properties>
-        <java.version>23</java.version>
+        <java.version>24</java.version>
     </properties>
 
     <dependencies>

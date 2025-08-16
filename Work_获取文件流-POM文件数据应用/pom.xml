@@ -16,7 +16,7 @@
     <description>Work_获取文件流-POM文件数据应用</description>
 
     <properties>
-        <java.version>23</java.version>
+        <java.version>24</java.version>
     </properties>
 
     <dependencies>
